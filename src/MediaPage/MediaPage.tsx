@@ -39,11 +39,11 @@ export function MediaPage() {
                 <Col span={15}>
                     <Space size='middle' direction='vertical' style={{ width: '100%'}}>
                         {media.torrents.map(torrent => (
-                            <Card title={media.name} key={torrent.id}>
+                            <Card key={torrent.id}>
                                 <p><AudioOutlined /> {torrent.voice_acting}</p>
-                                <Tag color="#55acee"> <DesktopOutlined /> {torrent.quality}</Tag>
-                                <Tag color="#55acee"><FileOutlined /> {torrent.size}</Tag>
-                                <Tag color="#55acee"><DownloadOutlined /> {torrent.downloads}</Tag>
+                                <Tag color="#55acee" icon={<DesktopOutlined />}>{torrent.quality}</Tag>
+                                <Tag color="#55acee" icon={<FileOutlined />}>{torrent.size}</Tag>
+                                <Tag color="#55acee" icon={<DownloadOutlined />}>{torrent.downloads}</Tag>
                             </Card>
                         ))}
                     </Space>

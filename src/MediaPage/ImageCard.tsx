@@ -1,15 +1,24 @@
 import { GlobalOutlined, StarOutlined } from "@ant-design/icons";
 import { Card } from "antd";
-import { Media } from "./data";
+import { addFavorite, Media, removeFavorite } from "./data";
 
-export function ImageCard({ title, poster }: Media) {
+export function ImageCard({ id, title, poster, is_favorite }: Media) {
+
+    async function changeFavorite(id: string, isFavorite: number) {
+        if(isFavorite) {
+            await removeFavorite(id);
+        } else {
+            await addFavorite(id);
+        }
+    }
+
     return (
         <Card
             bordered={false}
             bodyStyle={{ padding: 0}}
             cover={<img alt={title} src={poster} />}
             actions={[
-                <StarOutlined key="favorite" />,
+                <StarOutlined key="favorite" onClick={() => changeFavorite(id, is_favorite)} />,
                 <GlobalOutlined key="edit" />,
             ]}
         />

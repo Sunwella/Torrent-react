@@ -1,4 +1,4 @@
-import { Card, Input, Space, Tabs, Badge, Empty } from "antd";
+import { Input, Space, Tabs, Badge, Empty } from "antd";
 import { Tracker } from "../data";
 import { MediaCard } from "./MediaCard";
 import { SearchItem, searchMedia } from "./data";
