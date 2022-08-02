@@ -8,7 +8,7 @@ export interface SearchItem {
     title: string
     original_title: string
     poster: string
-    series_count: string
+    series_count?: string
     is_favorite: string
     created_at: string
     updated_at: string

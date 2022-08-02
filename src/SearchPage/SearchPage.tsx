@@ -1,4 +1,4 @@
-import { Card, Input, Space, Tabs } from "antd";
+import { Card, Input, Space, Tabs, Badge, Empty } from "antd";
 import { Tracker } from "../data";
 import { MediaCard } from "./MediaCard";
 import { SearchItem, searchMedia } from "./data";
@@ -37,10 +37,12 @@ export function SearchPage() {
             { currentTracker in searchingResults && searchingResults[currentTracker].length > 0 
                 ?   <Space size='middle' style={{ display: 'flex', justifyContent: 'space-between' }} wrap>
                         { searchingResults[currentTracker].map((media) => (
-                            <MediaCard key={media.id} {...media} />
+                            <Badge.Ribbon text={media.series_count}>
+                                <MediaCard key={media.id} {...media} />
+                            </Badge.Ribbon>
                         ))}
                     </Space>
-                :   <Card><p>Ничего не найдено</p></Card>
+                :   <Empty description='Файлы не найдены' />
             }
         </Space>
     )

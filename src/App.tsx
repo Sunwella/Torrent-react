@@ -3,7 +3,7 @@ import type { MenuProps } from 'antd';
 
 import './App.css';
 import { Link, Outlet } from 'react-router-dom';
-import { DownloadOutlined, HomeOutlined, SearchOutlined, StarOutlined } from '@ant-design/icons';
+import { CloudDownloadOutlined, HomeOutlined, SearchOutlined, StarOutlined } from '@ant-design/icons';
 
 const { Content, Sider } = Layout;
 
@@ -22,7 +22,7 @@ export function App() {
     {
       id: 'download',
       title: 'Загрузки',
-      icon: <DownloadOutlined />,
+      icon: <CloudDownloadOutlined />,
     },
     {
       id: 'favorite',
