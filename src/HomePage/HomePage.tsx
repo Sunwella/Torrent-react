@@ -19,7 +19,7 @@ export function HomePage() {
 
   const storageItems = storages.map((storage) => {
     return (
-      <Storage {...storage} />
+      <Storage key={storage.name} {...storage} />
     )
   })
 

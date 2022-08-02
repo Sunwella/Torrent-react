@@ -2,24 +2,39 @@ import { Layout, Menu } from 'antd';
 import type { MenuProps } from 'antd';
 
 import './App.css';
-import { Outlet } from 'react-router-dom';
-import { SearchOutlined } from '@ant-design/icons';
+import { Link, Outlet } from 'react-router-dom';
+import { DownloadOutlined, HomeOutlined, SearchOutlined, StarOutlined } from '@ant-design/icons';
 
 const { Content, Sider } = Layout;
 
 export function App() {
   const menuElem = [
     {
+      id: '',
+      title: 'На главную',
+      icon: <HomeOutlined />,
+    },
+    {
       id: 'search',
       title: 'Поиск',
       icon: <SearchOutlined />,
-    }
+    },
+    {
+      id: 'download',
+      title: 'Загрузки',
+      icon: <DownloadOutlined />,
+    },
+    {
+      id: 'favorite',
+      title: 'Избранное',
+      icon: <StarOutlined />,
+    },
   ]
 
   const items: MenuProps['items'] = menuElem.map((elem) => ({
     key: elem.id,
     icon: elem.icon,
-    label: elem.title,
+    label: <Link to={`/${elem.id}`} key={elem.id}>{elem.title}</Link>,
   }));
 
   return (

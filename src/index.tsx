@@ -11,6 +11,8 @@ import { HomePage } from './HomePage/HomePage';
 import { SearchPage } from './SearchPage/SearchPage';
 import { TrackersProvider } from './context/trackers';
 import { MediaPage } from './MediaPage/MediaPage';
+import { DownloadPage } from './DownloaPage/DownloadPage';
+import { FavoritePage } from './FavoritePage/FavoritePage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,6 +25,8 @@ root.render(
           <Route index element={<HomePage />} />
           <Route path="search" element={<SearchPage />} />
           <Route path=":trackerId/:mediaId" element={<MediaPage />} />
+          <Route path="download" element={<DownloadPage />} />
+          <Route path="favorite" element={<FavoritePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
