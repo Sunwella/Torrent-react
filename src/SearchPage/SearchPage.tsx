@@ -37,9 +37,14 @@ export function SearchPage() {
             { currentTracker in searchingResults && searchingResults[currentTracker].length > 0 
                 ?   <Space size='middle' style={{ display: 'flex', justifyContent: 'space-between' }} wrap>
                         { searchingResults[currentTracker].map((media) => (
-                            <Badge.Ribbon text={media.series_count}>
-                                <MediaCard key={media.id} {...media} />
-                            </Badge.Ribbon>
+                            <>
+                            {media.series_count
+                                ? <Badge.Ribbon text={media.series_count}>
+                                    <MediaCard key={media.id} {...media} />
+                                </Badge.Ribbon>
+                                : <MediaCard key={media.id} {...media} />
+                            }
+                            </>
                         ))}
                     </Space>
                 :   <Empty description='Файлы не найдены' />
