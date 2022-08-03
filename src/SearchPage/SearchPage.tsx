@@ -38,12 +38,12 @@ export function SearchPage() {
                 ?   <Space size='middle' style={{ display: 'flex', justifyContent: 'space-between' }} wrap>
                         { searchingResults[currentTracker].map((media) => (
                             <>
-                            {media.series_count
-                                ? <Badge.Ribbon text={media.series_count}>
-                                    <MediaCard key={media.id} {...media} />
-                                </Badge.Ribbon>
-                                : <MediaCard key={media.id} {...media} />
-                            }
+                                { media.series_count
+                                    ? <Badge.Ribbon text={media.series_count}>
+                                        <MediaCard key={media.id} {...media} />
+                                    </Badge.Ribbon>
+                                    : <MediaCard key={media.id} {...media} />
+                                }
                             </>
                         ))}
                     </Space>
