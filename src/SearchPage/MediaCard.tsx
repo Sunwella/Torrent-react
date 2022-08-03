@@ -2,7 +2,9 @@ import { Card } from "antd";
 import { Link } from "react-router-dom";
 import { SearchItem } from "./data";
 
-export function MediaCard({ tracker_id, title, poster, series_count, id }: SearchItem) {
+export type MediaCardProps = SearchItem
+
+export function MediaCard({ tracker_id, title, poster, id }: MediaCardProps) {
     return (
         <Link to={`/${tracker_id}/${id}`} key={id}>
             <Card

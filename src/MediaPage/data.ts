@@ -49,3 +49,7 @@ export async function addFavorite(id: SearchItem['id']) {
 export async function removeFavorite(id: SearchItem['id']) {
     await axios.post('http://media.mkraust.ru/api/favorites/remove', {id});
 }
+
+export async function downloadTorrent(id: Torrent['id']) {
+    await axios.post('http://media.mkraust.ru/api/download', {id});
+}

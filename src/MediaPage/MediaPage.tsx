@@ -5,12 +5,14 @@ import { getMedia, Media } from "./data";
 import { Typography, Card, Space, Row, Col, Tag, Badge, Spin } from 'antd';
 import { ImageCard } from "./ImageCard";
 import { AudioOutlined, DesktopOutlined, DownloadOutlined, FileOutlined } from "@ant-design/icons";
+import { DownloadModal } from "./DownloadModal";
 
 const { Title } = Typography;
 
 
 export function MediaPage() {
     const [media, setMedia] = useState<Media>();
+    const [visible, setVisible] = useState(false);
     const { mediaId } = useParams();
 
     const fetchMediaHandler = async () => {
@@ -21,6 +23,10 @@ export function MediaPage() {
     useEffect(() => {
         fetchMediaHandler();
     }, []);
+
+    function openModal() {
+        setVisible(true);
+    }
 
     if (!media) return <Spin size="large" />;
 
@@ -39,12 +45,15 @@ export function MediaPage() {
                 <Col span={15}>
                     <Space size='middle' direction='vertical' style={{ width: '100%'}}>
                         {media.torrents.map(torrent => (
-                            <Card key={torrent.id}>
-                                <p><AudioOutlined /> {torrent.voice_acting}</p>
-                                <Tag color="#55acee" icon={<DesktopOutlined />}>{torrent.quality}</Tag>
-                                <Tag color="#55acee" icon={<FileOutlined />}>{torrent.size}</Tag>
-                                <Tag color="#55acee" icon={<DownloadOutlined />}>{torrent.downloads}</Tag>
-                            </Card>
+                            <>
+                                <Card key={torrent.id} onClick={openModal}>
+                                    <p><AudioOutlined /> {torrent.voice_acting}</p>
+                                    <Tag color="#55acee" icon={<DesktopOutlined />}>{torrent.quality}</Tag>
+                                    <Tag color="#55acee" icon={<FileOutlined />}>{torrent.size}</Tag>
+                                    <Tag color="#55acee" icon={<DownloadOutlined />}>{torrent.downloads}</Tag>
+                                </Card>
+                                <DownloadModal torrentId={torrent.id} visible={visible} onClose={() => setVisible(false)} />
+                            </>
                         ))}
                     </Space>
                 </Col>
